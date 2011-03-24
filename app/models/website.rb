@@ -15,7 +15,26 @@ class Website
     self.url = normalize_url(self.url.blank? ? self.domain : self.url)
   end
 
+  def usedby_data
+    {
+      :meta => {
+        :type => :usedby,
+        :total => self.users.count
+      },
+      :websites => ActiveSupport::JSON.decode(self.users.to_json)
+    }
+  end
 
+  def uses_data
+    {
+      :meta => {
+        :type => :uses,
+        :total => self.usees.count
+      },
+      :websites => ActiveSupport::JSON.decode(self.usees.to_json)
+    }
+  end
+  
   def valid_url
     if normalize_url(self.website).nil?
       [ false, "Please provide a valid website url." ]

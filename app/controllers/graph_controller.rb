@@ -7,21 +7,11 @@ class GraphController < ApplicationController
   end
 
   def usedby
-    @profiles = ActiveSupport::JSON.decode(@website.users.to_json)
-    
-    render :json =>  {
-      :meta => {:type => :usedby, :total => @website.users.count},
-      :websites => @profiles
-    }
+    render :json => @website.usedby_data
   end
   
   def uses
-    @profiles = ActiveSupport::JSON.decode(@website.usees.to_json)
-
-    render :json => {
-      :meta => {:type => :uses, :total => @website.usees.count},
-      :websites => @profiles
-    }
+    render :json => @website.uses_data
   end
   
   def load_website
