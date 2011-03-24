@@ -1,27 +1,38 @@
 class GraphController < ApplicationController
-
-  before_filter :blah
   
-  def blah
-    @profile = {
-      :domain => params[:domain],
-      :url => "http://api.pluspanda.com",
-      :logo => "asdfasd",
-      :comment => "jellopo"
-    }    
-  end
+  before_filter :load_website
   
   def profile
-    render :json => @profile
+    render :json => @website
   end
 
-  def uses
-    render :json => {:uses => [@profile]}
+  def usedby
+    @profiles = ActiveSupport::JSON.decode(@website.users.to_json)
+    
+    render :json =>  {
+      :meta => {:type => :usedby, :total => @website.users.count},
+      :websites => @profiles
+    }
   end
   
+  def uses
+    @profiles = ActiveSupport::JSON.decode(@website.usees.to_json)
+
+    render :json => {
+      :meta => {:type => :uses, :total => @website.usees.count},
+      :websites => @profiles
+    }
+  end
   
-  def usedby
-    render :json => {:usedby => [@profile, @profile]}
+  def load_website
+    @website = Website.first(:domain => params[:domain])
+    
+    if @website.nil?
+      @website = Website.new(:domain => params[:domain], :url => "http://#{params[:domain]}")
+      render :json => @website
+      return true
+    end
+    
   end
   
 end
