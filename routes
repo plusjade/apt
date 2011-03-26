@@ -1,5 +1,12 @@
 (in /Users/jade/Dropbox/www/peapodd/graph)
-  v1_domain_index GET /v1/:domain(/)(.:format)      {:action=>"index", :domain=>/[\w.-]+/, :controller=>"graph"}
-v1_domain_profile GET /v1/:domain/profile(.:format) {:action=>"profile", :domain=>/[\w.-]+/, :controller=>"graph"}
- v1_domain_usedby GET /v1/:domain/usedby(.:format)  {:action=>"usedby", :domain=>/[\w.-]+/, :controller=>"graph"}
-   v1_domain_uses GET /v1/:domain/uses(.:format)    {:action=>"uses", :domain=>/[\w.-]+/, :controller=>"graph"}
+    v1_domain_index GET    /v1/:domain(/)(.:format)             {:action=>"index", :domain=>/[^\/]+/, :controller=>"graph"}
+  v1_domain_profile GET    /v1/:domain/profile(.:format)        {:action=>"profile", :domain=>/[^\/]+/, :controller=>"graph"}
+   v1_domain_usedby GET    /v1/:domain/usedby(.:format)         {:action=>"usedby", :domain=>/[^\/]+/, :controller=>"graph"}
+     v1_domain_uses GET    /v1/:domain/uses(.:format)           {:action=>"uses", :domain=>/[^\/]+/, :controller=>"graph"}
+    v1_domain_users GET    /v1/:domain/users(.:format)          {:action=>"index", :domain=>/[^\/]+/, :controller=>"users"}
+                    POST   /v1/:domain/users(.:format)          {:action=>"create", :domain=>/[^\/]+/, :controller=>"users"}
+ new_v1_domain_user GET    /v1/:domain/users/new(.:format)      {:action=>"new", :domain=>/[^\/]+/, :controller=>"users"}
+edit_v1_domain_user GET    /v1/:domain/users/:id/edit(.:format) {:action=>"edit", :domain=>/[^\/]+/, :controller=>"users"}
+     v1_domain_user GET    /v1/:domain/users/:id(.:format)      {:action=>"show", :domain=>/[^\/]+/, :controller=>"users"}
+                    PUT    /v1/:domain/users/:id(.:format)      {:action=>"update", :domain=>/[^\/]+/, :controller=>"users"}
+                    DELETE /v1/:domain/users/:id(.:format)      {:action=>"destroy", :domain=>/[^\/]+/, :controller=>"users"}

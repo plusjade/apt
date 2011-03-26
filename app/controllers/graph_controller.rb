@@ -4,7 +4,6 @@ class GraphController < ApplicationController
   
   def index
     
-    
   end
   
   def profile
@@ -17,17 +16,6 @@ class GraphController < ApplicationController
   
   def uses
     render :json => @website.uses_data
-  end
-  
-  def load_website
-    @website = Website.first(:domain => params[:domain])
-    
-    if @website.nil?
-      @website = Website.new(:domain => params[:domain], :url => "http://#{params[:domain]}")
-      render :json => @website
-      return true
-    end
-    
   end
   
 end

@@ -6,6 +6,8 @@ Graph::Application.routes.draw do
       get "/profile(.:format)"  ,:action => "profile", :as => "profile"
       get "/usedby(.:format)"   ,:action => "usedby", :as => "usedby"
       get "/uses(.:format)"     ,:action => "uses", :as => "uses"
+      
+      resources :users
     end
   end
 

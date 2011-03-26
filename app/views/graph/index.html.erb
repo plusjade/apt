@@ -28,8 +28,19 @@
 <% end %>
 
 <h3>Use <%= @website.domain %>?</h3>
-<%= link_to "Add your website profile", "#" %>
 
+<%= form_tag(v1_domain_users_path) do  %>
+  <fieldset>
+    <label for="user_domain">Your Website</label>
+    <br/><input type="text" name="user[domain]" id="user_domain" />
+  </fieldset>
+  <fieldset>
+    <label for="user_domain">Comment</label>
+    <br/><textarea name="user[comment]" id="user_commnet"></textarea>
+  </fieldset>
+    
+  <button type="submit">Add</button>
+<% end %>
 <h2>Uses</h2>
 
 <% @website.uses_data[:websites].each do |profile| %>
