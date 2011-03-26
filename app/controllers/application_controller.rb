@@ -6,4 +6,10 @@ class ApplicationController < ActionController::Base
   rescue_from DataMapper::ObjectNotFoundError do |exception|
     render :text => exception
   end
+  
+  def default_url_options(options={})
+    options[:format] = :iframe if request.format == :iframe
+    options[:domain] = params[:domain]
+    options
+  end
 end

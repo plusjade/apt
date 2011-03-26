@@ -16,23 +16,25 @@
 
 <h1><%= @website.domain %></h1>
 
-
 <h2>Used by</h2>
 
 <% @website.usedby_data[:websites].each do |profile| %>
   <div class="profile">
-    <%= link_to profile[:url], "/v1/#{profile[:domain]}" %>
+    <%= link_to profile[:url], v1_domain_index_path(profile[:domain]) %>
     <p>
       <%= profile[:comment_by] %>
     </p>
   </div>
 <% end %>
 
+<h3>Use <%= @website.domain %>?</h3>
+<%= link_to "Add your website profile", "#" %>
+
 <h2>Uses</h2>
 
 <% @website.uses_data[:websites].each do |profile| %>
   <div class="profile">
-    <%= link_to profile[:url], "/v1/#{profile[:domain]}" %>
+    <%= link_to profile[:url], v1_domain_index_path(profile[:domain]) %>
     <p>
       <%= profile[:comment_on] %>
     </p>

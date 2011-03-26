@@ -1,0 +1,5 @@
+(in /Users/jade/Dropbox/www/peapodd/graph)
+  v1_domain_index GET /v1/:domain(/)(.:format)      {:action=>"index", :domain=>/[\w.-]+/, :controller=>"graph"}
+v1_domain_profile GET /v1/:domain/profile(.:format) {:action=>"profile", :domain=>/[\w.-]+/, :controller=>"graph"}
+ v1_domain_usedby GET /v1/:domain/usedby(.:format)  {:action=>"usedby", :domain=>/[\w.-]+/, :controller=>"graph"}
+   v1_domain_uses GET /v1/:domain/uses(.:format)    {:action=>"uses", :domain=>/[\w.-]+/, :controller=>"graph"}
