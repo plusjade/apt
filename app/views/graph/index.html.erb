@@ -1,0 +1,40 @@
+<style type="text/css">
+  h1 {
+    font-family:verdana;
+  }
+  h2 {
+    padding:5px;
+    border-bottom:2px solid #444;
+  }
+  .profile {
+    margin: 10px;
+  }
+  .profile p {
+    padding:10px;
+  }
+</style>
+
+<h1><%= @website.domain %></h1>
+
+
+<h2>Used by</h2>
+
+<% @website.usedby_data[:websites].each do |profile| %>
+  <div class="profile">
+    <%= link_to profile[:url], "/v1/#{profile[:domain]}" %>
+    <p>
+      <%= profile[:comment_by] %>
+    </p>
+  </div>
+<% end %>
+
+<h2>Uses</h2>
+
+<% @website.uses_data[:websites].each do |profile| %>
+  <div class="profile">
+    <%= link_to profile[:url], "/v1/#{profile[:domain]}" %>
+    <p>
+      <%= profile[:comment_on] %>
+    </p>
+  </div>
+<% end %>

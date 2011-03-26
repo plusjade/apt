@@ -2,6 +2,11 @@ class GraphController < ApplicationController
   
   before_filter :load_website
   
+  def index
+    
+    
+  end
+  
   def profile
     render :json => @website
   end
