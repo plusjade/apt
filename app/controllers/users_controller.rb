@@ -2,18 +2,18 @@ class UsersController < ApplicationController
 
   before_filter :load_website
   
-  # ToDO: normalize domain
   # add sanitizer
   def create
-    
-    @user = Website.first_or_create(:domain => params[:user][:domain])
+    domain = Website.normalize_domain(params[:user][:domain])
+    render :text => "invalid domain" and return unless domain
+
+    @user = Website.first_or_create(:domain => domain)
     
     @relationship = @website.user_associations.first(:user => @user)
     
     if @relationship
       @relationship.comment =  params[:user][:comment]
     else
-      puts "create new"
       @relationship = @website.user_associations.new({
         :user     => @user,
         :comment  => params[:user][:comment]

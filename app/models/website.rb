@@ -11,10 +11,22 @@ class Website
   has n, :users, self, :through => :user_associations, :via => :user
   has n, :usees, self, :through => :usee_associations, :via => :website
 
-  before :save do
-    self.url = normalize_url(self.url.blank? ? self.domain : self.url)
+  validates_with_method :domain, :validate_domain
+  validates_with_method :domain, :validate_url
+  
+  before :valid? do
+    self.domain = Website.normalize_domain(self.domain)
+    self.url = Website.normalize_url(self.url.blank? ? self.domain : self.url)
   end
   
+  
+  def self.first_by_domain(domain)
+    domain = Website.normalize_domain(domain)
+    
+    domain ? self.first(:domain => domain) : nil
+  end
+  
+    
   def usedby_data
     {
       :meta => {
@@ -69,24 +81,42 @@ class Website
     websites
   end
   
-    
-  def valid_url
-    if normalize_url(self.website).nil?
+
+  def validate_domain
+    if Website.normalize_domain(self.domain).nil?
+      [ false, "Please provide a valid website domain." ]
+    else
+      return true
+    end
+  end
+      
+  def validate_url
+    if Website.normalize_url(self.url).nil?
       [ false, "Please provide a valid website url." ]
     else
       return true
     end
   end
   
-  def normalize_url(url)
+  def self.normalize_url(url)
     # url contains http:// or https://
     unless url =~ /(https|http)+(:\/\/)/i 
       url = 'http://' + url
     end  
-    url = URI::parse(url).normalize.to_s
-    return url
+    
+    URI::parse(url).normalize.to_s
+    
   rescue URI::InvalidURIError => e
-    return nil
+    nil
+  end
+    
+  def self.normalize_domain(url)
+    url =  normalize_url(url)
+    
+    url ? URI.split(url)[2] : nil
+    
+  rescue URI::InvalidURIError => e
+    nil      
   end
     
 end
