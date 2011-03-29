@@ -12,42 +12,111 @@
   .profile p {
     padding:10px;
   }
+  fieldset { border:0;}
+  textarea {
+    width:300px;
+    height:100px;
+    font-family:verdana;
+    font-size:12px;
+  }
+  input {
+    width:300px;
+    font-family:verdana;
+    font-size:16px;
+    font-weight:bold;
+    padding:3px;
+  }
+  
+  
+  #switch {
+    clear:both;
+    list-style:none;
+    margin-left:10px;
+  }
+  #switch li {
+    display:inline;
+  }
+
+  #switch li a {
+    display:block;
+    float:left;
+    margin-right:10px;
+    ackground: #A5C473;
+    order-bottom:2px solid #A5C473;
+    padding:8px 35px;
+    background:#ccc;
+    border-bottom:1px solid #ccc;
+    color:#fff;
+    font-size:16px;
+    font-family:verdana;
+    -webkit-border-top-right-radius:3px;
+    -webkit-border-top-left-radius:3px;
+    text-decoration:none;
+    position:relative;
+    top:1px; 
+  }
+  #switch li a:hover, #switch li a.active {
+    background:#FFF;
+    color:#444;
+    border:1px solid #444;
+    border-bottom:1px solid #fff;
+  }
+  #panel {
+    clear:both;
+    padding:10px;
+    border-top:1px solid #444;
+  }
 </style>
 
-<h1><%= @website.domain %></h1>
+<h1 style="margin:30px 0"><%= @website.domain %></h1>
 
-<h2>Used by</h2>
+<ul id="switch">
+  <li><a href="#">Used By</a></li>
+  <li><a href="#">Uses</a></li>
+</ul>
 
-<% @website.usedby_data[:websites].each do |profile| %>
-  <div class="profile">
-    <%= link_to profile[:url], v1_domain_index_path(profile[:domain]) %>
-    <p>
-      <%= profile[:comment_by] %>
-    </p>
-  </div>
-<% end %>
+<div id="panel">
+  <div class="tabs">
+  <% @website.usedby_data[:websites].each do |profile| %>
+    <div class="profile">
+      <%= link_to profile[:url], v1_domain_index_path(profile[:domain]) %>
+      <p>
+        <%= profile[:comment_by] %>
+      </p>
+    </div>
+  <% end %>
 
-<h3>Use <%= @website.domain %>?</h3>
+    <h3>Use <%= @website.domain %>?</h3>
 
-<%= form_tag(v1_domain_users_path) do  %>
-  <fieldset>
-    <label for="user_domain">Your Website</label>
-    <br/><input type="text" name="user[domain]" id="user_domain" />
-  </fieldset>
-  <fieldset>
-    <label for="user_domain">Comment</label>
-    <br/><textarea name="user[comment]" id="user_commnet"></textarea>
-  </fieldset>
+  <%= form_tag(v1_domain_users_path) do  %>
+    <fieldset>
+      <label for="user_domain">Your Website</label>
+      <br/><input type="text" name="user[domain]" id="user_domain" />
+    </fieldset>
+    <fieldset>
+      <label for="user_domain">Comment</label>
+      <br/><textarea name="user[comment]" id="user_commnet"></textarea>
+    </fieldset>
     
-  <button type="submit">Add</button>
-<% end %>
-<h2>Uses</h2>
-
-<% @website.uses_data[:websites].each do |profile| %>
-  <div class="profile">
-    <%= link_to profile[:url], v1_domain_index_path(profile[:domain]) %>
-    <p>
-      <%= profile[:comment_on] %>
-    </p>
+    <button type="submit">Add</button>
+  <% end %>
   </div>
-<% end %>
+
+  <div class="tabs">
+  <% @website.uses_data[:websites].each do |profile| %>
+    <div class="profile">
+      <%= link_to profile[:url], v1_domain_index_path(profile[:domain]) %>
+      <p>
+        <%= profile[:comment_on] %>
+      </p>
+    </div>
+  <% end %>
+  </div>
+
+</div>
+
+<script type="text/javascript">
+  $(function(){
+    simpleTabs.init($("#switch"), $("#panel"));
+  })
+</script>
