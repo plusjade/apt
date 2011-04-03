@@ -76,7 +76,10 @@
 </ul>
 
 <div id="panel">
+  
   <div class="tabs">
+  
+<% if @website.usedby_data[:websites].any? %>
   <% @website.usedby_data[:websites].each do |profile| %>
     <div class="profile">
       <%= link_to profile[:url], v1_domain_index_path(profile[:domain]) %>
@@ -85,6 +88,9 @@
       </p>
     </div>
   <% end %>
+<% else %>
+  No data yet.
+<% end %>
 
     <h3>Use <%= @website.domain %>?</h3>
 
@@ -103,6 +109,7 @@
   </div>
 
   <div class="tabs">
+<% if @website.uses_data[:websites].any? %>    
   <% @website.uses_data[:websites].each do |profile| %>
     <div class="profile">
       <%= link_to profile[:url], v1_domain_index_path(profile[:domain]) %>
@@ -111,6 +118,9 @@
       </p>
     </div>
   <% end %>
+<% else %>
+  No data yet.
+<% end %>  
   </div>
 
 </div>

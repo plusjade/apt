@@ -1,5 +1,9 @@
 Graph::Application.routes.draw do
+  
+  devise_for :accounts
 
+  root :to => "static#home"
+  
   scope "/v1", :as => "v1" do
     scope "/:domain", :constraints => { :domain => /[^\/]+/ }, :controller => :graph, :as => "domain" do
       get "(/)"                 ,:action => "index", :as => "index"

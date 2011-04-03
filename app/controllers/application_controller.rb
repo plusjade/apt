@@ -13,8 +13,8 @@ class ApplicationController < ActionController::Base
     
     if @website.nil?
       @website = Website.new(:domain => params[:domain], :url => "http://#{params[:domain]}")
-      render :json => @website
-      return true
+      #render :json => @website
+      #return true
     end
     
   end
