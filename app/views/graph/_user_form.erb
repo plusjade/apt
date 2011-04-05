@@ -1,0 +1,27 @@
+
+<% if @user_association %>
+  <h3>Yay, you're using <%= @website.domain %>!</h3>
+<% else %>
+  <h3>Use <%= @website.domain %>?</h3>
+<% end %>
+  
+<%= form_tag(v1_domain_users_path) do  %>
+  <fieldset>
+    <label for="user_domain">Your Website</label>
+    <br/>
+    
+  <% if current_account %>
+    <input type="text" name="user[domain]" id="user_domain" value="<%= current_account.domain%>" READONLY/>
+  <% else %>
+    <input type="text" name="user[domain]" id="user_domain" />
+  <% end %>
+    
+  </fieldset>
+  
+  <fieldset>
+    <label for="user_domain">Comment</label>
+    <br/><textarea name="user[comment]" id="user_commnet"><%= @user_association.comment if @user_association %></textarea>
+  </fieldset>
+  
+  <button type="submit"><%= @user_association ? "Update" : "Add" %></button>
+<% end %>

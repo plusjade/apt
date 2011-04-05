@@ -66,9 +66,23 @@
     padding:10px;
     border-top:1px solid #444;
   }
+  .left {
+    width:45%;
+    float:left;
+  }
+  .right {
+    width:45%;
+    float:right;
+    }
 </style>
 
-<h1 style="margin:30px 0"><%= @website.domain %></h1>
+<div class="left">
+  <h1 style="margin:30px 0"><%= @website.domain %></h1>
+</div>
+
+<div class="right">
+  <%= render :partial => "graph/user_form" %>
+</div>
 
 <ul id="switch">
   <li><a href="#">Used By</a></li>
@@ -82,7 +96,7 @@
 <% if @website.usedby_data[:websites].any? %>
   <% @website.usedby_data[:websites].each do |profile| %>
     <div class="profile">
-      <%= link_to profile[:url], v1_domain_index_path(profile[:domain]) %>
+      <%= link_to profile[:domain], v1_domain_index_path(profile[:domain]) %>
       <p>
         <%= profile[:comment_by] %>
       </p>
@@ -91,28 +105,13 @@
 <% else %>
   No data yet.
 <% end %>
-
-    <h3>Use <%= @website.domain %>?</h3>
-
-  <%= form_tag(v1_domain_users_path) do  %>
-    <fieldset>
-      <label for="user_domain">Your Website</label>
-      <br/><input type="text" name="user[domain]" id="user_domain" />
-    </fieldset>
-    <fieldset>
-      <label for="user_domain">Comment</label>
-      <br/><textarea name="user[comment]" id="user_commnet"></textarea>
-    </fieldset>
-    
-    <button type="submit">Add</button>
-  <% end %>
   </div>
 
   <div class="tabs">
 <% if @website.uses_data[:websites].any? %>    
   <% @website.uses_data[:websites].each do |profile| %>
     <div class="profile">
-      <%= link_to profile[:url], v1_domain_index_path(profile[:domain]) %>
+      <%= link_to profile[:domain], v1_domain_index_path(profile[:domain]) %>
       <p>
         <%= profile[:comment_on] %>
       </p>
