@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   end
   
   def account_root_path
-    v1_domain_index_path(current_account.domain)
+    domain_index_path(current_account.domain)
   end
     
     

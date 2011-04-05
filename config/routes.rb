@@ -15,4 +15,6 @@ Graph::Application.routes.draw do
     end
   end
 
+  get "/:domain", :constraints => { :domain => /[^\/]+/ }, :controller => :graph, :action => "index", :as => "domain_index"
+  
 end
