@@ -5,6 +5,8 @@ class Website
   property :domain, String
   property :url, String
   
+  has 1, :account, :requred => true
+
   has n, :user_associations, WebsitesUser, :child_key => [:website_id]
   has n, :usee_associations, WebsitesUser, :child_key => [:user_id]
   

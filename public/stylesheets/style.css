@@ -46,6 +46,20 @@ p {margin-bottom:10px;}
 
 /* wrapper */
 #wrapper {
-  margin:auto;
+  margin:0;
+  padding:0;
+  margin: 10px auto;
   width:80%;
 }
+#admin_menu {
+  list-style:none;
+  padding:10px;
+  margin-bottom:10px;
+  border:1px solid #ccc;
+  overflow:hidden;
+}
+#admin_menu li{
+  display:inline;
+  margin-right:10px;
+}
+

@@ -8,6 +8,11 @@ class Account
 
 
   property :id, Serial
+  
+  belongs_to :website
 
-
+  def domain
+    self.website.domain
+  end
+  
 end

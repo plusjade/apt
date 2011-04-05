@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
 <html>
 <head>
   <title>Graph</title>
@@ -7,13 +7,23 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-  
-  <div style="float:right"><%= flash[:notice] %></div>
-  
   <div id="wrapper">
+    <ul id="admin_menu">
+    <% if current_account %>
+      <li><%= link_to "my page", v1_domain_index_path(current_account.domain) %></li>
+      <li><%= link_to "edit account", edit_account_registration_path(current_account) %></li>
+      <li><%= link_to "sign out", destroy_account_session_path %></li>
+    <% else %>  
+      <li><%= link_to "home", root_path %></li>
+      <li><%= link_to "sign in", new_account_session_path %></li>
+      <li><%= link_to "Sign Up", new_account_registration_path(:domain => nil) %></li>
+    <% end %>  
+    </ul>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    
     <%= yield %>
+    
   </div>
 </body>
 </html>
