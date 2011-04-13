@@ -19,9 +19,8 @@
   </fieldset>
   
   <fieldset>
-    <label for="user_domain">Comment</label>
-    <br/><textarea name="user[comment]" id="user_commnet"><%= @user_association.comment if @user_association %></textarea>
+    <textarea name="user[comment]" id="user_commnet"><%= @user_association.comment if @user_association %></textarea>
   </fieldset>
   
-  <button type="submit"><%= @user_association ? "Update" : "Add" %></button>
+  <button type="submit"><%= @user_association ? "Update Comment" : "Add Comment" %></button>
 <% end %>

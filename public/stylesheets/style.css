@@ -17,6 +17,8 @@ table, caption, tbody, tfoot, thead, tr, th, td {
 }
 body {
 	line-height: 1;
+	color:#3a4c4c;
+	background:#daeded;
 }
 ol, ul {
 	list-style: none;
@@ -35,27 +37,48 @@ a {
 }
 
 /* base */ 
-h1, h2, h3, h4, h5 {margin-bottom:10px;}
+h1, h2, h3, h4, h5 {margin-bottom:10px; font-family:verdana;}
 h1 { font-size:26px;}
 h2 { font-size:22px;}
 h3 { font-size:20px;}
 h4 { font-size:18px;}
 h5 { font-size:16px;}
 
-p {margin-bottom:10px;}
-
+p {margin-bottom:10px;
+  font-family:arial;
+  line-height:1.5em;
+  }
+em {font-weight:bold;}
+  
 /* wrapper */
 #wrapper {
   margin:0;
   padding:0;
   margin: 10px auto;
-  width:80%;
+  width:800px;
+}
+#header {
+  margin-bottom:20px;
+  overflow:hidden;
+  border-bottom:1px solid #ccc;
+}
+#footer {
+  clear:both;
+  height:50px;
+}
+#logo{
+  float:left;
+  position:relative;
+  top:5px;
+}
+#logo a {
+  color:#11ca98;
 }
 #admin_menu {
+  float:right;
   list-style:none;
   padding:10px;
-  margin-bottom:10px;
-  border:1px solid #ccc;
+  text-align:right;
   overflow:hidden;
 }
 #admin_menu li{
@@ -63,16 +86,36 @@ p {margin-bottom:10px;}
   margin-right:10px;
 }
 
+#main-title {
+  font-size:30px;
+  margin: 50px 0 20px 0;
+  text-align:center;
+  font-family:verdana;
+  color:#6b9013;
+}
 
+#works-pic {
+  margin-bottom:10px;
+}
+#works-pic td {
+  padding:5px;
+  text-align:center;
+}
+
+.mid {
+  text-align:center;
+  font-size:36px;
+  vertical-align:middle;
+  color:#333;
+}
+.mid span {
+  position:relative;
+  
+}
+.count {
+}
 /* profile index */
 
-h1 {
-  font-family:verdana;
-}
-h2 {
-  padding:5px;
-  border-bottom:2px solid #444;
-}
 .profile {
   margin: 10px;
 }
@@ -141,3 +184,33 @@ input {
   width:45%;
   float:right;
   }
+  
+  
+  
+  #box {
+    padding:30px;
+    background:#fff;
+    order:1px solid orange;
+    -webkit-border-radius:10px;
+    -webkit-box-shadow:2px 2px 10px #83a1a1;
+  }
+  #box h2.cufon  {
+    background:#3a4c4c;
+    padding:5px 10px;
+    color:#fff;
+    float:left;
+    -webkit-border-radius:10px;
+  }
+  #box p {
+    clear:both;
+    text-align:center;
+    margin:20px 0;
+  }
+  #sample-header {
+    text-align:center;
+    margin:auto;
+  }
+    #sample-logo-wall {
+      display:block;
+      margin:auto;
+    }  

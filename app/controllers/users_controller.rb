@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     
     if @relationship.save
       flash[:notice] = "User added!"
-      redirect_to v1_domain_index_path
+      redirect_to domain_index_path
     end
 
 

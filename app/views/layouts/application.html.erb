@@ -4,26 +4,39 @@
   <title>Graph</title>
   <%= stylesheet_link_tag "style" %>
   <%= javascript_include_tag "jquery", "application" %>
+  <%= javascript_include_tag "cufon-yui", "chunkfive_400.font" %>
   <%= csrf_meta_tag %>
+  
+  <script type="text/javascript">
+    Cufon.replace('h1.cufon-header', {color: '-linear-gradient(#8cb32e, 0.45=#8cb32e, 0.45=#8cb32e, #6b9013)', textShadow: '#fff 1px 1px, #fff -1px -1px'});
+    Cufon.replace('#logo a');
+    Cufon.replace('h1.cufon');
+  </script>
 </head>
 <body>
   <div id="wrapper">
-    <ul id="admin_menu">
-    <% if current_account %>
-      <li><%= link_to "my page", domain_index_path(current_account.domain) %></li>
-      <li><%= link_to "edit account", edit_account_registration_path(current_account) %></li>
-      <li><%= link_to "sign out", destroy_account_session_path %></li>
-    <% else %>  
-      <li><%= link_to "home", root_path %></li>
-      <li><%= link_to "sign in", new_account_session_path %></li>
-      <li><%= link_to "sign up", new_account_registration_path(:domain => nil) %></li>
-    <% end %>  
-    </ul>
+    <div id="header">
+      <h1 id="logo"><a href="/">apt.fm</a></h1>
+      
+      <ul id="admin_menu">
+      <% if current_account %>
+        <li><%= link_to "my page", domain_index_path(current_account.domain) %></li>
+        <li><%= link_to "edit account", edit_account_registration_path(current_account) %></li>
+        <li><%= link_to "sign out", destroy_account_session_path %></li>
+      <% else %>  
+        <li><%= link_to "sign in", new_account_session_path %></li>
+        <li><%= link_to "sign up", new_account_registration_path(:domain => nil) %></li>
+      <% end %>  
+      </ul>
+    </div>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     
     <%= yield %>
     
   </div>
+  
+  <div id="footer"> </div>
+  
 </body>
 </html>
