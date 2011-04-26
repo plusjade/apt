@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   end
 
   before_filter do
-    @site_name = "apt.fm"
+    @site_name = "rep.fm"
   end
   
   def load_website
