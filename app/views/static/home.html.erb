@@ -1,16 +1,16 @@
 
 
-<h1 id="main-title" class="cufon-header">Google.com Uses <em>apt.fm</em> to Broadcast it's Reputation.</h1>
+<h1 id="main-title" class="cufon-header">Google Uses <em><%= @site_name %></em> to Broadcast its Reputation.</h1>
 
 <p style="text-align:center; margin-bottom:40px; color:#638080">
   (Ok, that's not true yet, but wouldn't that statement
-  automatically give apt.fm more credibility?)
+  automatically give <%= @site_name %> more credibility?)
 </p>
 
 <div style="margin-bottom:40px">
   <p style="width:500px; margin:0 auto 10px auto">
-    apt.fm helps web applications build great reputations
-     by collecting and sharing <em>verifiable</em> testimonials from the websites that use them.
+    <%= @site_name %> helps web applications build great reputations by collecting
+    <br/>and sharing <em>verifiable</em> testimonials from the websites that use them.
   </p>  
 </div>
 
@@ -34,12 +34,12 @@
   <h2 class="cufon">2</h2>
   <p>
     jason@flightcaster.com shares his experience with heroku
-    <br/>by adding a quick comment to apt.fm/heroku.com
+    <br/>by adding a quick comment to <%= link_to "#{@site_name}/heroku.com", domain_index_path("heroku.com") %>
   </p>
   
   <h2 class="cufon">3</h2>
   <p>
-    Heroku's reputation along with cool metadata is publicly shareable via apt.fm's data API:
+    Heroku's reputation along with cool metadata is publicly shareable via <%= @site_name %>'s data API:
     <br/>
   </p>
 

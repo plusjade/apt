@@ -7,7 +7,10 @@ class ApplicationController < ActionController::Base
     render :text => exception
   end
 
-
+  before_filter do
+    @site_name = "apt.fm"
+  end
+  
   def load_website
     @website = Website.first(:domain => params[:domain])
     
