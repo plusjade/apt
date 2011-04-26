@@ -1,67 +1,70 @@
 
 
-<h1 id="main-title" class="cufon-header">Google Uses <em><%= @site_name %></em> to Broadcast its Reputation.</h1>
+<h1 id="main-title" class="cufon-header">Google Uses <em><%= @site_name %></em> to <br/>Broadcast its Reputation.</h1>
 
 <p style="text-align:center; margin-bottom:40px; color:#638080">
   (Ok, that's not true yet, but wouldn't that statement
   automatically give <%= @site_name %> more credibility?)
 </p>
 
-<div style="margin-bottom:40px">
-  <p style="width:500px; margin:0 auto 10px auto">
-    <%= @site_name %> helps web applications build great reputations by collecting
-    <br/>and sharing <em>verifiable</em> testimonials from the websites that use them.
-  </p>  
-</div>
-
-<h1 class="cufon" style="font-size:30px; text-align:center; margin-bottom:40px;">How it Works</h1>
-
 <div id="box">
-  <h2 class="cufon">1</h2>
+  <h1 class="cufon" id="box-top">How it Works</h1>
+  <div class="inner">
+    <p style="font-size:24px;">
+      <%= @site_name %> helps web applications build great reputations
+      <br/>by collecting and sharing <em>verifiable</em> testimonials
+      <br/>from the websites that use them.
+    </p>
   
-  <table id="works-pic" width="100%">
-    <tr>
-      <td><img src="/images/flightcaster.png" /></td>
-      <td class="mid"><span>uses</span></td>
-      <td><img src="/images/heroku.jpg" /></td>
-    </tr>
-  </table>
+    <h2 class="cufon">1. Apps Get Used</h2>
   
-  <p>
-    Flightcaster uses Heroku to manage its application infrastructure.
-  </p>
+    <table id="works-pic" width="100%">
+      <tr>
+        <td><img src="/images/flightcaster.png" /></td>
+        <td class="mid"><span>uses</span></td>
+        <td><img src="/images/heroku.jpg" /></td>
+      </tr>
+    </table>
   
-  <h2 class="cufon">2</h2>
-  <p>
-    jason@flightcaster.com shares his experience with heroku
-    <br/>by adding a quick comment to <%= link_to "#{@site_name}/heroku.com", domain_index_path("heroku.com") %>
-  </p>
+    <p>
+      Flightcaster uses Heroku to manage its application infrastructure.
+    </p>
   
-  <h2 class="cufon">3</h2>
-  <p>
-    Heroku's reputation along with cool metadata is publicly shareable via <%= @site_name %>'s data API:
-    <br/>
-  </p>
+    <h2 class="cufon">2. Experiences are Shared</h2>
+    <p>
+      jason@flightcaster.com shares his experience with heroku
+      <br/>by adding a quick comment to <%= link_to "#{@site_name}/heroku.com", domain_index_path("heroku.com") %>
+    </p>
+  
+    <h2 class="cufon">3. Reputations Grow</h2>
+    <p>
+      Heroku's reputation along with cool metadata is publicly available via <%= @site_name %>'s data API:
+      <br/>
+    </p>
 
-  <p>
-    <img src="/images/json.gif" />
-  </p>
+    <p>
+      <img src="/images/json.gif" />
+    </p>
   
 
-  <h2 class="cufon">3.a</h2>
-  <p>  
-    Grab logos and build a <b>Used By</b> logo wall without the manual hassle:
-  </p>
+    <h2 class="cufon">4. Broadcast Your Reputation</h2>
+    <ol class="ordered-list">
+      <li>Share your <%= @site_name %> profile with new customers.</li>
+      <li>Add apt.fm's widgets to your website.</li>
+      <li>Build custom widgets using <%= @site_name %>'s api.</li>
+    </ol>
+    
+    <h2 id="sample-header">Used by Over 1,000 companies worldwide.</h2>
+    <p>
+      <img src="/images/sample-logo-wall.jpg" id="sample-logo-wall"/>
+    <p>
 
-  <h2 id="sample-header">Used by Over 1,000 companies worldwide.</h2>
-  <p>
-    <img src="/images/sample-logo-wall.jpg" id="sample-logo-wall"/>
-  <p>
+    <div style="color:#999;text-align:center;">
+      This is an example <b>Used By</b> widget.
+      <br/>(image copyright <a href="http://www.getexceptional.com/">http://www.getexceptional.com/</a> and used here only for demo purposes.)
+    </div>
 
-  <div style="color:#999;text-align:center;">
-    (this image copyright <a href="http://www.getexceptional.com/">http://www.getexceptional.com/</a> and used here only for demo purposes.)
   </div>
-
 </div>  
 
 
